@@ -15,6 +15,7 @@ import (
 	v1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/utils/ptr"
 )
 
@@ -108,7 +109,7 @@ func MigrateFile(secretClient coreclient.SecretController, nodeClient coreclient
 	}
 
 	nodeNames := []string{}
-	nodeList, _ := nodeClient.Cache().List(nil)
+	nodeList, _ := nodeClient.Cache().List(labels.Everything())
 	for _, node := range nodeList {
 		nodeNames = append(nodeNames, node.Name)
 	}
