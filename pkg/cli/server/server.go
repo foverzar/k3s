@@ -185,6 +185,7 @@ func run(app *cli.Context, cfg *cmds.Server, leaderControllers server.CustomCont
 		serverConfig.ControlConfig.EtcdSnapshotCron = cfg.EtcdSnapshotCron
 		serverConfig.ControlConfig.EtcdSnapshotDir = cfg.EtcdSnapshotDir
 		serverConfig.ControlConfig.EtcdSnapshotRetention = cfg.EtcdSnapshotRetention
+		serverConfig.ControlConfig.EtcdAddress = cfg.EtcdAddress
 		if cfg.EtcdS3 {
 			serverConfig.ControlConfig.EtcdS3 = &config.EtcdS3{
 				AccessKey:     cfg.EtcdS3AccessKey,

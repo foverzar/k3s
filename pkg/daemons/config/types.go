@@ -241,6 +241,7 @@ type Control struct {
 	EtcdSnapshotCompress     bool     `json:"-"`
 	EtcdListFormat           string   `json:"-"`
 	EtcdS3                   *EtcdS3  `json:"-"`
+	EtcdAddress              string   `json:"-"` // TODO why '-' ?
 	ServerNodeName           string
 	VLevel                   int
 	VModule                  string

@@ -95,6 +95,7 @@ type Server struct {
 	EtcdSnapshotRetention    int
 	EtcdSnapshotCompress     bool
 	EtcdListFormat           string
+	EtcdAddress              string
 	EtcdS3                   bool
 	EtcdS3Endpoint           string
 	EtcdS3EndpointCA         string
@@ -383,6 +384,11 @@ var ServerFlags = []cli.Flag{
 		Name:        "etcd-snapshot-compress",
 		Usage:       "(db) Compress etcd snapshot",
 		Destination: &ServerConfig.EtcdSnapshotCompress,
+	},
+	&cli.StringFlag{
+		Name:        "etcd-address",
+		Usage:       "(db) Etcd exposed address",
+		Destination: &ServerConfig.EtcdAddress,
 	},
 	&cli.BoolFlag{
 		Name:        "etcd-s3",

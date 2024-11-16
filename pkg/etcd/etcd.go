@@ -192,10 +192,15 @@ func (e *ETCD) SetControlConfig(config *config.Control) error {
 
 	e.config = config
 
-	address, err := getAdvertiseAddress(e.config.PrivateIP)
-	if err != nil {
-		return err
+	address := e.config.EtcdAddress
+	if address == "" {
+		var err error
+		address, err = getAdvertiseAddress(e.config.PrivateIP)
+		if err != nil {
+			return err
+		}
 	}
+
 	e.address = address
 
 	return e.setName(false)
